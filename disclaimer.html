@@ -1,110 +1,540 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Disclaimer - Astola Toolkit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disclaimers — Astola Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.7;
-      color: #333;
+    :root {
+      --bg: #0a0c10;
+      --surface: #111318;
+      --surface2: #181c24;
+      --border: #1f2433;
+      --accent: #4f8ef7;
+      --accent2: #7c5ef7;
+      --accent-soft: rgba(79,142,247,0.10);
+      --text: #e4e8f0;
+      --muted: #7a8299;
+      --success: #3ecf8e;
+      --warning: #f59e0b;
+      --danger: #f43f5e;
     }
-    h1, h2 {
-      color: #0b0b0b;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(79,142,247,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 90% 100%, rgba(124,94,247,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(10,12,16,0.88);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 780px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .logo-name {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    /* ─── MAIN ─── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,142,247,0.2);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #e4e8f0 30%, #7a8299 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 14.5px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .meta-chip {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    /* ─── DISCLAIMER SECTION ─── */
+    /*
+      HOW TO ADD A NEW DISCLAIMER:
+      1. Copy one <div class="disclaimer"> block below.
+      2. Change the data-num attribute to the next number.
+      3. Update the <h2> title.
+      4. Fill in the <p class="disc-intro"> summary.
+      5. Add <div class="disc-point"> rows as needed.
+      6. Optionally add a <div class="callout"> at the bottom.
+      That's it — styling is automatic.
+    */
+
+    .disclaimer {
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .disclaimer:nth-child(1) { animation-delay: 0.00s; }
+    .disclaimer:nth-child(2) { animation-delay: 0.06s; }
+    .disclaimer:nth-child(3) { animation-delay: 0.12s; }
+    .disclaimer:nth-child(4) { animation-delay: 0.18s; }
+    .disclaimer:nth-child(5) { animation-delay: 0.24s; }
+    /* New entries inherit the last delay automatically */
+
+    .disc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .disc-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,142,247,0.2);
+      padding: 2px 8px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .disc-intro {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.75;
+    }
+
+    /* Point rows */
+    .disc-points {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+
+    .disc-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 18px;
+      background: var(--surface);
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .disc-point:last-child { border-bottom: none; }
+    .disc-point:hover { background: var(--surface2); }
+
+    .disc-point strong { color: var(--text); font-weight: 600; }
+
+    .disc-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .disc-dot-warn {
+      background: var(--warning);
+    }
+
+    .disc-dot-danger {
+      background: var(--danger);
+    }
+
+    /* Callouts */
+    .callout {
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 13.5px;
+      line-height: 1.65;
+      margin-top: 10px;
+    }
+
+    .callout-blue   { background: rgba(79,142,247,0.07); border: 1px solid rgba(79,142,247,0.2); color: #94b8fa; }
+    .callout-yellow { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2); color: #fbbf24; }
+    .callout-green  { background: rgba(62,207,142,0.07); border: 1px solid rgba(62,207,142,0.2); color: #6ee7b7; }
+    .callout-red    { background: rgba(244,63,94,0.07);  border: 1px solid rgba(244,63,94,0.2);  color: #fb7185; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    footer span { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+      main { padding: 36px 16px 60px; }
     }
   </style>
 </head>
 <body>
 
-<h1>Disclaimer</h1>
-<p><strong>Astola Toolkit</strong><br>
-Effective Date: April 2026</p>
+<header>
+  <div class="header-inner">
+    <div class="logo-icon">🛡️</div>
+    <div class="logo-name">Astola Toolkit</div>
+  </div>
+</header>
 
-<h2>1. General Information</h2>
-<p>
-Astola Toolkit is a general-purpose utility application designed to provide various digital tools for informational and productivity purposes only.
-All features are provided “as is” without warranties of any kind.
-</p>
+<main>
 
-<h2>2. No Government Affiliation</h2>
-<p>
-Astola Toolkit is NOT affiliated with, endorsed by, or connected to any government agency, authority, or organization including but not limited to PTA, NADRA, or any telecom operator.
-</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Disclaimers</div>
+    <h1>Important<br/>Disclaimers</h1>
+    <p class="hero-sub">
+      Please read the following disclaimers carefully before using Astola Toolkit and its features.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-chip">Effective: April 23, 2026</div>
+      <div class="meta-chip">Ages 17+</div>
+    </div>
+  </div>
 
-<h2>3. SIM Info & Network Finder</h2>
-<p>
-This feature provides publicly available network and carrier-related information using third-party services.
-</p>
-<ul>
-  <li>Results are NOT official or verified</li>
-  <li>No CNIC, address, or personal identity data is accessed</li>
-  <li>We do NOT store searched phone numbers</li>
-</ul>
+  <!-- ════════════════════════════════
+       DISCLAIMER 1 — GENERAL
+       ════════════════════════════════ -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">01</div>
+      <h2>General App &amp; Data Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      Astola Toolkit is an independent utility app. It is not affiliated with, endorsed by, or connected to any government agency, telecom operator, or official authority.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Tools and information provided are for <strong>general utility and convenience purposes only</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        We collect <strong>minimal device information</strong> solely for app functionality and analytics
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        We do <strong>not sell, share, or misuse</strong> your data in any way
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        By using this app, you agree to our <strong>Privacy Policy and Terms of Service</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        This app is intended for users <strong>aged 17 and older</strong>
+      </div>
+    </div>
+  </div>
 
-<p>
-Users are strictly prohibited from using this feature for harassment, tracking individuals, fraud, or any illegal activity.
-</p>
+  <!-- ════════════════════════════════
+       DISCLAIMER 2 — COOKIE / BROWSER
+       ════════════════════════════════ -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">02</div>
+      <h2>Cookie &amp; Browser Data Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      Using the cache and cookie clearing feature within Astola Toolkit will have the following effects on your in-app browser data.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        Clearing cookies will <strong>log you out of websites</strong> and may delete saved preferences, shopping carts, and session data
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        This action <strong>cannot be undone</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        This feature affects <strong>only the Astola Toolkit in-app browser</strong> — your device's default browser and other apps are not affected
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Astola Toolkit does <strong>not access, read, or transmit</strong> your browser history or cookie data to any server
+      </div>
+    </div>
+    <div class="callout callout-yellow">
+      Clearing browser data is irreversible. Make sure you have saved any important session or login information before proceeding.
+    </div>
+  </div>
 
-<h2>4. Temporary Email Feature</h2>
-<p>
-Temporary email services are provided via third-party providers for privacy protection purposes only.
-</p>
-<ul>
-  <li>Do NOT use for spam, phishing, or illegal activities</li>
-  <li>Email content is not guaranteed to be secure</li>
-  <li>Use at your own risk</li>
-</ul>
+  <!-- ════════════════════════════════
+       DISCLAIMER 3 — FILE DOWNLOAD
+       ════════════════════════════════ -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">03</div>
+      <h2>File Download Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      Downloading files from the internet carries inherent security risks. Please review the following before downloading any files through the in-app browser.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        Astola Toolkit does <strong>not scan, verify, or take responsibility</strong> for files downloaded through the in-app browser
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        Downloaded files may contain <strong>malware, viruses, or other harmful content</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        We strongly recommend <strong>scanning all downloaded files</strong> with reputable antivirus software before opening them
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        Downloading executable files <strong>(.APK, .EXE, .BAT)</strong> is done entirely at your own risk
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        We are <strong>not liable</strong> for any damage to your device or data resulting from downloaded files
+      </div>
+    </div>
+    <div class="callout callout-red">
+      Only download files from sources you fully trust. Astola Toolkit assumes no responsibility for any harm caused by downloaded content.
+    </div>
+  </div>
 
-<h2>5. Community Tools (User Content)</h2>
-<p>
-Some tools and links in the app are submitted by users.
-</p>
-<ul>
-  <li>We do NOT guarantee safety, accuracy, or legality</li>
-  <li>We are NOT responsible for third-party websites</li>
-  <li>Users must ensure submissions are lawful</li>
-</ul>
+  <!-- ════════════════════════════════
+       DISCLAIMER 4 — USER CONTENT (UGC)
+       ════════════════════════════════ -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">04</div>
+      <h2>User-Generated Content Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      Tools and links submitted by users are reviewed by our moderation team before publication. However, the following limitations apply.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Astola Toolkit does <strong>not endorse, verify, or guarantee</strong> the accuracy, safety, or legality of any user-submitted content or third-party website
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        We are <strong>not responsible</strong> for any harm, loss, or damage arising from your use of third-party tools listed in this app
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        Content that violates our <strong>community guidelines will be removed</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        To report inappropriate content, use the <strong>report button</strong> on any tool listing
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        You must be <strong>17 or older</strong> to submit content
+      </div>
+    </div>
+    <div class="callout callout-blue">
+      User-submitted tools are moderated but not endorsed by Astola Toolkit. Use all third-party tools at your own discretion.
+    </div>
+  </div>
 
-<h2>6. File Downloads</h2>
-<p>
-Files downloaded through the app are hosted on third-party servers.
-</p>
-<ul>
-  <li>We do NOT verify file safety</li>
-  <li>Users must scan files before opening</li>
-  <li>Executable files may contain malware</li>
-</ul>
+  <!-- ════════════════════════════════
+       DISCLAIMER 5 — TEMP EMAIL
+       ════════════════════════════════ -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">05</div>
+      <h2>Temporary Email Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      Temporary email addresses are intended solely for legitimate privacy protection, such as avoiding unwanted marketing emails or protecting your primary inbox.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        This service <strong>must not be used</strong> for spam, fraud, phishing, or circumventing account verification systems
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-danger"></div>
+        Use for <strong>any illegal activity is strictly prohibited</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        We reserve the right to <strong>suspend access</strong> for users who abuse this service
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot disc-dot-warn"></div>
+        Email content processed through this feature is <strong>not private, not encrypted, and not permanently stored</strong>
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Use this feature <strong>at your own risk</strong>
+      </div>
+    </div>
+    <div class="callout callout-yellow">
+      Temporary emails are not a secure communication channel. Do not use them for sensitive or confidential information.
+    </div>
+  </div>
 
-<h2>7. Limitation of Liability</h2>
-<p>
-Under no circumstances shall Astola Toolkit or its developers be liable for any direct, indirect, incidental, or consequential damages arising from:
-</p>
-<ul>
-  <li>Use or misuse of the app</li>
-  <li>Reliance on information provided</li>
-  <li>Third-party services or content</li>
-</ul>
+  <!--
+    ════════════════════════════════
+    TO ADD A NEW DISCLAIMER, COPY THIS TEMPLATE:
 
-<h2>8. User Responsibility</h2>
-<p>
-You agree to use this application responsibly and in compliance with all applicable laws and regulations.
-You are solely responsible for your actions while using the app.
-</p>
+    <div class="disclaimer">
+      <div class="disc-header">
+        <div class="disc-num">06</div>
+        <h2>Your New Disclaimer Title</h2>
+      </div>
+      <p class="disc-intro">
+        Brief intro paragraph describing what this disclaimer covers.
+      </p>
+      <div class="disc-points">
+        <div class="disc-point">
+          <div class="disc-dot"></div>
+          Blue dot = neutral / informational point
+        </div>
+        <div class="disc-point">
+          <div class="disc-dot disc-dot-warn"></div>
+          Yellow dot = warning / caution point
+        </div>
+        <div class="disc-point">
+          <div class="disc-dot disc-dot-danger"></div>
+          Red dot = prohibited / high-risk point
+        </div>
+      </div>
+      <div class="callout callout-blue">
+        Optional callout box. Change class to callout-yellow, callout-green, or callout-red.
+      </div>
+    </div>
+    ════════════════════════════════
+  -->
 
-<h2>9. Changes to Disclaimer</h2>
-<p>
-We may update this Disclaimer at any time without prior notice.
-Continued use of the app means you accept any changes.
-</p>
+</main>
 
-<h2>10. Contact</h2>
-<p>
-Developer: Astola<br>
-Email: jibrantalib2121@gmail.com
-</p>
+<footer>
+  © 2026 <span>Astola Toolkit</span> · All rights reserved · Disclaimers
+</footer>
 
 </body>
-</html>
+  </html>
+      
