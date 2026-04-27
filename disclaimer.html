@@ -149,17 +149,6 @@
     }
 
     /* ─── DISCLAIMER SECTION ─── */
-    /*
-      HOW TO ADD A NEW DISCLAIMER:
-      1. Copy one <div class="disclaimer"> block below.
-      2. Change the data-num attribute to the next number.
-      3. Update the <h2> title.
-      4. Fill in the <p class="disc-intro"> summary.
-      5. Add <div class="disc-point"> rows as needed.
-      6. Optionally add a <div class="callout"> at the bottom.
-      That's it — styling is automatic.
-    */
-
     .disclaimer {
       margin-bottom: 32px;
       animation: fadeUp 0.5s ease both;
@@ -170,7 +159,7 @@
     .disclaimer:nth-child(3) { animation-delay: 0.12s; }
     .disclaimer:nth-child(4) { animation-delay: 0.18s; }
     .disclaimer:nth-child(5) { animation-delay: 0.24s; }
-    /* New entries inherit the last delay automatically */
+    .disclaimer:nth-child(6) { animation-delay: 0.30s; }
 
     .disc-header {
       display: flex;
@@ -313,9 +302,7 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════
-       DISCLAIMER 1 — GENERAL
-       ════════════════════════════════ -->
+  <!-- DISCLAIMER 1 — GENERAL -->
   <div class="disclaimer">
     <div class="disc-header">
       <div class="disc-num">01</div>
@@ -348,9 +335,7 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════
-       DISCLAIMER 2 — COOKIE / BROWSER
-       ════════════════════════════════ -->
+  <!-- DISCLAIMER 2 — COOKIE / BROWSER -->
   <div class="disclaimer">
     <div class="disc-header">
       <div class="disc-num">02</div>
@@ -382,9 +367,7 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════
-       DISCLAIMER 3 — FILE DOWNLOAD
-       ════════════════════════════════ -->
+  <!-- DISCLAIMER 3 — FILE DOWNLOAD -->
   <div class="disclaimer">
     <div class="disc-header">
       <div class="disc-num">03</div>
@@ -420,9 +403,7 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════
-       DISCLAIMER 4 — USER CONTENT (UGC)
-       ════════════════════════════════ -->
+  <!-- DISCLAIMER 4 — USER CONTENT (UGC) -->
   <div class="disclaimer">
     <div class="disc-header">
       <div class="disc-num">04</div>
@@ -458,9 +439,7 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════
-       DISCLAIMER 5 — TEMP EMAIL
-       ════════════════════════════════ -->
+  <!-- DISCLAIMER 5 — TEMP EMAIL -->
   <div class="disclaimer">
     <div class="disc-header">
       <div class="disc-num">05</div>
@@ -496,38 +475,53 @@
     </div>
   </div>
 
-  <!--
-    ════════════════════════════════
-    TO ADD A NEW DISCLAIMER, COPY THIS TEMPLATE:
-
-    <div class="disclaimer">
-      <div class="disc-header">
-        <div class="disc-num">06</div>
-        <h2>Your New Disclaimer Title</h2>
+  <!-- DISCLAIMER 6 — SIM INFO / NETWORK FINDER -->
+  <div class="disclaimer">
+    <div class="disc-header">
+      <div class="disc-num">06</div>
+      <h2>SIM Info &amp; Network Finder Disclaimer</h2>
+    </div>
+    <p class="disc-intro">
+      The SIM Info and Network Finder feature provides general, publicly available mobile network information only. It is not affiliated with, endorsed by, or connected to PTA, NADRA, or any telecom operator or government authority.
+    </p>
+    <div class="disc-points">
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Results are limited to <strong>general publicly available network information</strong> and mobile operator details only
       </div>
-      <p class="disc-intro">
-        Brief intro paragraph describing what this disclaimer covers.
-      </p>
-      <div class="disc-points">
-        <div class="disc-point">
-          <div class="disc-dot"></div>
-          Blue dot = neutral / informational point
-        </div>
-        <div class="disc-point">
-          <div class="disc-dot disc-dot-warn"></div>
-          Yellow dot = warning / caution point
-        </div>
-        <div class="disc-point">
-          <div class="disc-dot disc-dot-danger"></div>
-          Red dot = prohibited / high-risk point
-        </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        This feature does <strong>not provide SIM owner names</strong>, government-issued identity numbers, residential addresses, or any government-verified personal information
       </div>
-      <div class="callout callout-blue">
-        Optional callout box. Change class to callout-yellow, callout-green, or callout-red.
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        This app does <strong>not access PTA, NADRA, or any telecom operator database</strong> in any form
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        Results are <strong>non-official and informational in nature</strong> and should not be relied upon for legal, governmental, or verification purposes
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        This feature does <strong>not determine or disclose precise locations</strong> of any device or individual
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        We do <strong>not guarantee the accuracy or completeness</strong> of any result returned by this feature
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        We do <strong>not collect, store, or share</strong> any phone number or search query entered through this feature
+      </div>
+      <div class="disc-point">
+        <div class="disc-dot"></div>
+        No personal data is <strong>transmitted to third parties</strong> as a result of using this feature
       </div>
     </div>
-    ════════════════════════════════
-  -->
+    <div class="callout callout-blue">
+      This feature is provided for general informational purposes only. Astola Toolkit is not responsible for any decisions made based on the results of this feature.
+    </div>
+  </div>
 
 </main>
 
@@ -536,5 +530,4 @@
 </footer>
 
 </body>
-  </html>
-      
+</html>
